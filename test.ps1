@@ -1,1 +1,1 @@
-get-process	
+get-process	| get-member
