@@ -38,22 +38,27 @@ function FindWebBinding
 
   # Changed import method to work with PS v2.0
   #Import-Module WebAdministration
-  $iisVersion = Get-ItemProperty "HKLM:\software\microsoft\InetStp";
+$iisVersion = Get-ItemProperty "HKLM:\software\microsoft\InetStp";
 if ($iisVersion.MajorVersion -eq 8)
     {
         Import-Module WebAdministration
     }
 
-    if ($iisVersion.MinorVersion -le 7.6)
+if ($iisVersion.MajorVersion -eq 7)
+{
+   
+    if ($iisVersion.MinorVersion -ge 5 )
     {
-        $webAdminModule = get-module -ListAvailable | where { $_.Name -eq "WebAdministration" }
-  
-            If ($webAdminModule -eq $null) 
-            {
-                import-module WebAdministration
-            }
-        
-}
+        Import-Module WebAdministration
+    }
+    else
+    {
+         if (-not (Get-PSSnapIn | Where {$_.Name -eq "WebAdministration";})) {
+            Add-PSSnapIn WebAdministration;
+        }
+    }
+}  
+
   
     $Websites = Get-ChildItem IIS:\Sites
 
