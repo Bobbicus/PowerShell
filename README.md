@@ -1,2 +1,0 @@
-# PowerShell
-Public PowerShell scripts
