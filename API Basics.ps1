@@ -1,9 +1,9 @@
 ﻿ $username = "robe4172"
  
- $Response = Invoke-RestMethod -Uri "https://ws.core.rackspace.com/ctkapi/login/robe4172" -Body "{`"password`":`"42240878`"}" -ContentType "application\json" -Method "Post"
+ $Response = Invoke-RestMethod -Uri "https://api.com/ctkapi/login/user1" -Body "{`"password`":`"42240878`"}" -ContentType "application\json" -Method "Post"
 
  #Validate Auth token 
- https://ws.core.rackspace.com/ctkapi/session/47411c3b281ac3a07b4ce55b3ac3a2bf
+ https://api.com/ctkapi/session/312654654sdf654asd65454asdf
 
 $ComputerAttributes = @(
         "account.name",
@@ -48,12 +48,12 @@ $ComputerAttributes = @(
 
 return $JSON
 
-$COREToken = "53240b287bb68cf29de17124e44eb2d8"
+$COREToken = "312654654sdf654asd65454asdf"
 
 
 
 #query the API this uses the contents of $JSON object
-$results = Invoke-RestMethod -Uri "https://ws.core.rackspace.com/ctkapi/query" -ContentType "application\json" -Method "Post" -Headers @{"X-Auth"=$COREToken} -Body $JSON -TimeoutSec 180
+$results = Invoke-RestMethod -Uri "https://api.com/ctkapi/query" -ContentType "application\json" -Method "Post" -Headers @{"X-Auth"=$COREToken} -Body $JSON -TimeoutSec 180
 
 $results.result
 
